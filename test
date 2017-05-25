@@ -1,0 +1,33 @@
+#! /bin/bash
+
+NAME=nginx
+PREFIX=/usr/local/openresty/nginx
+DAEMON=$PREFIX/sbin/$NAME
+
+do_all(){
+    # start upstream server
+     #$DAEMON -p `pwd` -c conf_test/beta1.conf
+     #$DAEMON -p `pwd` -c conf_test/beta2.conf
+     #$DAEMON -p `pwd` -c conf_test/beta3.conf
+     #$DAEMON -p `pwd` -c conf_test/beta4.conf
+
+    # start proxy server，灰度系统的配置也写在conf/nginx.conf中
+     $DAEMON -p `pwd` -c conf_test/nginx.conf
+}
+
+do_single(){
+    echo $CONF
+    $DAEMON -p `pwd` -c conf_test/${CONF}.conf
+}
+
+case "$1" in
+  all)
+  do_all
+  ;;
+  *)
+  CONF=$1
+  do_single
+  ;;
+esac
+
+exit 0
