@@ -8,11 +8,11 @@ local function return_serverError(msg)
 end
 
 local function getClientIP()
-   return ngx.var.http_x_forwarded_for;
+   return ngx.var.http_x_forwarded_for or ngx.var.remote_addr
 end
 
-local clientIP = getClientIP();
+local clientIP = getClientIP()
 
-if iputils.ip_in_cidrs(clientIP, whitelist) == false then
-    return_serverError()
+if iputils.ip_in_cidrs(clientIP, whitelist) then
+    return_serverError(clientIp)
 end
