@@ -10,7 +10,7 @@ local function return_forbidden(msg)
 end
 
 local function getClientIP()
-   return ngx.var.http_x_forwarded_for;
+   return ngx.var.http_x_forwarded_for or ngx.ngx.var.remote_addr;
 end
 
 local clientIP = getClientIP();
