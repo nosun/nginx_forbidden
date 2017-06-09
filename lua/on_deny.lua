@@ -1,10 +1,7 @@
 local iputils = require("resty.iputils")
 
-local function return_serverError(status,msg)
-    ngx.status = status
-    ngx.header["Content-type"] = "text/html"
-    ngx.say(msg or "server error")
-    ngx.exit(0)
+local function return_serverError(status)
+    ngx.exit(status)
 end
 
 local function getClientIP()
