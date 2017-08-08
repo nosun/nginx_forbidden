@@ -43,8 +43,8 @@ end
 
 -- get file path
 local function get_file_path(name)
-    local p1 = math.floor(tonumber(string.sub(name,1,3),16)/4)
-    local p2 = math.floor(tonumber(string.sub(name,4,6),16)/4)
+    local p1 = math.floor(tonumber(string.sub(name,1,3),16) % 50)
+    local p2 = math.floor(tonumber(string.sub(name,4,6),16) % 50)
     return p1 .. "/" .. p2 .. "/"
 end
 
