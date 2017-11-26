@@ -1,6 +1,4 @@
-local uri = ngx.var.uri
-
-local rewrite_area = {
+dorriswedding_need_htm = {
     "wedding-dresses-for-pregnant-women",
     "pregnancy-formal-dresses",
     "pregnancy-cocktail-dresses",
@@ -25,27 +23,3 @@ local rewrite_area = {
     "designer-maternity-evening-dresses",
     "cheap-maternity-wedding-dresses"
 }
-
-
-function IsInTable(value, tbl)
-    for k,v in ipairs(tbl) do
-        if v == value then
-            return true;
-        end
-    end
-    return false;
-end
-
-local function check_uri(uri)
-    if IsInTable(uri, rewrite_area) then
-        return true
-    else
-        return false
-    end
-end
-
-local result = check_uri(uri)
-
-if result == false then
-    ngx.req.set_uri( uri .. "l", true)
-end
