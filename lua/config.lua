@@ -151,3 +151,5 @@ image_forbidden = {
 "fdc8b2922f0dc547dc4dcad574dda835.jpg",
 "ff49601ddd55354473b480ddbe30b0bd.jpg"
 }
+dorriswedding_need_htm = {
+}
