@@ -1,3 +1,4 @@
+dofile "/etc/nginx/lua/config.lua"
 local magick = require "magick"
 local width, height, quality, type, name, ext, host, sig, root =
 tonumber(ngx.var.width), tonumber(ngx.var.height), tonumber(ngx.var.quality), tonumber(ngx.var.type),
@@ -16,6 +17,15 @@ local function my_split(inputstr, sep)
         i = i + 1
     end
     return t
+end
+
+local function IsInTable(value, tbl)
+    for k,v in ipairs(tbl) do
+        if v == value then
+            return true;
+        end
+    end
+    return false;
 end
 
 -- http not found
@@ -43,8 +53,8 @@ end
 
 -- get file path
 local function get_file_path(name)
-    local p1 = math.floor(tonumber(string.sub(name,1,3),16)/4)
-    local p2 = math.floor(tonumber(string.sub(name,4,6),16)/4)
+    local p1 = math.floor(tonumber(string.sub(name,1,3),16) % 50)
+    local p2 = math.floor(tonumber(string.sub(name,4,6),16) % 50)
     return p1 .. "/" .. p2 .. "/"
 end
 
@@ -112,6 +122,13 @@ local crop = get_cropType(type)
 local arr  = my_split(host,'.')
 local site = arr[#arr-1]
 local domain = arr[#arr-1] .. '.' .. arr[#arr]
+
+-- check access 
+local file_name = name ..".".. ext
+
+if IsInTable(file_name, image_forbidden)  == true then
+    ngx.exit(ngx.HTTP_NOT_FOUND) 
+end
 
 --check signature
 local signature = string.sub(ngx.md5(ngx.md5(site) .. width .. height .. quality .. type .. name .. '.' ..ext),0,16)
