@@ -18,8 +18,8 @@ server {
     fastcgi_hide_header Set-Cookie;
     add_header X-Cache $upstream_cache_status;
 
-    access_log /data/log/nginx/img.smallsites_access.log cache;
-    error_log  /data/log/nginx/img.smallsites_error.log; 
+    access_log /var/log/nginx/img.smallsites_access.log cache;
+    error_log  /var/log/nginx/img.smallsites_error.log; 
   
     location / {
         proxy_pass http://image;

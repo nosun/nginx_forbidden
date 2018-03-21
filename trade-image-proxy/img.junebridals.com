@@ -3,13 +3,13 @@ server {
     listen     80;
     listen     443 ssl;
     server_name  img.junebridals.com;
-ssl_certificate /etc/letsencrypt/live/img.junebridals.com/fullchain.pem; # managed by Certbot
-ssl_certificate_key /etc/letsencrypt/live/img.junebridals.com/privkey.pem; # managed by Certbot
+ssl_certificate /etc/letsencrypt/live/img.junebridals.com-0001/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/img.junebridals.com-0001/privkey.pem; # managed by Certbot
 
     ssl_stapling on;
     ssl_stapling_verify on;
 
-    #access_log /data/log/nginx/img.junebridals_access.log;
+    #access_log /var/log/nginx/img.junebridals_access.log;
 
     add_header X-Cache $upstream_cache_status;
 
@@ -33,8 +33,9 @@ ssl_certificate_key /etc/letsencrypt/live/img.junebridals.com/privkey.pem; # man
 
       expires 30d;
       add_header Cache-Control "public";
-      access_log off;
+      #access_log off;
     }
+
 
 
 }

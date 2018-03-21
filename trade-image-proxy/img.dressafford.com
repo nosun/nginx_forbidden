@@ -3,13 +3,13 @@ server {
     listen     80;
     listen     443 ssl;
     server_name  img.dressafford.com;
-    ssl_certificate /etc/letsencrypt/live/img.dressafford.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/img.dressafford.com/privkey.pem; # managed by Certbot
+ssl_certificate /etc/letsencrypt/live/img.dressafford.com-0001/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/img.dressafford.com-0001/privkey.pem; # managed by Certbot
 
     ssl_stapling on;
     ssl_stapling_verify on;
 
-    #access_log /data/log/nginx/img.dressafford_access.log;
+    #access_log /var/log/nginx/img.dressafford_access.log;
 
     add_header X-Cache $upstream_cache_status;
 
@@ -35,6 +35,7 @@ server {
       add_header Cache-Control "public";
       access_log off;
     }
+
 
 
 }
