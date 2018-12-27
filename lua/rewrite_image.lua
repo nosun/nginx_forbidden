@@ -78,12 +78,33 @@ local function get_size(path,width,height)
     return width,height
 end
 
+local function check_if_mark(mark, width)
+    if width < 400 and mark  ~= 'mingdabeta.com' then
+        return false
+    else
+        return true
+    end
+end
+
 -- get filters
 local function get_mark(mark,width,height)
-    if width < 400 then
+    if check_if_mark(mark,width) == false then
         return ''
     end
-    if (mark == 'ucenterdress.com') then
+
+    if (mark == 'mingdabeta.com') then
+        local mark_width = math.floor(width * 0.8)
+        local pos_left  = math.floor((width - mark_width)/2)
+        local pos_top   = math.floor(0.5 * height)  -- about gold rate cut height of water_mark
+        local mark_path = root .. "/mark/" .. mark .. "_" .. mark_width .. ".png"
+
+        if(file_exists(mark_path) == false) then
+            magick.thumb(root .. "/mark/" .. mark .. ".png", mark_width .. "x", mark_path)
+        end
+
+        return ":watermark(/mark/" .. mark .. "_" .. mark_width .. ".png," .. pos_left .. "," .. pos_top .. ",0)"
+
+    elseif (mark == 'ucenterdress.com') then
         local mark_width = width
         local pos_left  = 0
         local pos_top   = 0
