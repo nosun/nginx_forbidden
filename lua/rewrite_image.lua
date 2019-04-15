@@ -1,8 +1,9 @@
 dofile "/etc/nginx/lua/config.lua"
 local magick = require "magick"
-local width, height, quality, type, name, ext, host, sig, root =
+local width, height, quality, type, name, ext, host, sig, root=
 tonumber(ngx.var.width), tonumber(ngx.var.height), tonumber(ngx.var.quality), tonumber(ngx.var.type),
 ngx.var.name, ngx.var.ext, ngx.var.h ,ngx.var.sig, ngx.var.root
+local webp = ngx.var.webp
 
 local max_width,max_height = 1684,2000
 local thumbor_key = "unsafe"
@@ -129,7 +130,13 @@ local function get_mark(mark,width,height)
     end
 end
 
-
+local function get_webp(webp)
+    if webp == 1 then
+        return ":format(webp)"
+    else
+        return ""
+    end
+end
 
 local function get_cropType(type)
     local crop = 'smart';
@@ -164,8 +171,9 @@ local real_path = root .. "/" .. file_path;
 -- begin rewrite
 local width,height = get_size(real_path,width,height)
 local filter_mark = get_mark(domain,width,height)
+local filter_webp = get_webp(webp)
 local filter_quality = ":quality(" .. quality ..")"
-local filters = "filters" .. filter_mark .. filter_quality
+local filters = "filters" .. filter_mark .. filter_quality .. filter_webp
 --local filters = "filters" .. filter_quality
 
 local real_path = "/" .. thumbor_key .. "/" .. width .. "x" .. height .. "/" .. crop .. "/" .. filters .. "/" .. file_path
