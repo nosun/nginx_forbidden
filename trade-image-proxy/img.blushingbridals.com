@@ -28,7 +28,7 @@ ssl_certificate_key /etc/letsencrypt/live/img.blushingbridals.com-0001/privkey.p
       proxy_set_header Host $host;
       proxy_set_header X-Real-IP $remote_addr;
       proxy_cache image_cache;
-      proxy_cache_key $host$uri;
+      proxy_cache_key $host$uri$webp;
       proxy_cache_valid 200 304 10m;
 
       expires 30d;

@@ -26,8 +26,8 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_cache image_cache;
-        proxy_cache_key $host$uri;
-      proxy_cache_valid 200 304 30d;
+        proxy_cache_key $host$uri$webp;
+        proxy_cache_valid 200 304 30d;
 
         expires 30d;
         add_header Cache-Control "public";
