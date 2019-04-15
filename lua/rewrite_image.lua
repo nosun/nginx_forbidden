@@ -3,7 +3,7 @@ local magick = require "magick"
 local width, height, quality, type, name, ext, host, sig, root=
 tonumber(ngx.var.width), tonumber(ngx.var.height), tonumber(ngx.var.quality), tonumber(ngx.var.type),
 ngx.var.name, ngx.var.ext, ngx.var.h ,ngx.var.sig, ngx.var.root
-local webp = ngx.var.webp
+local webp = tonumber(ngx.var.webp)
 
 local max_width,max_height = 1684,2000
 local thumbor_key = "unsafe"
