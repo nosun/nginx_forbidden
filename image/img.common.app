@@ -23,7 +23,9 @@ server {
                  img.dressafford.com
                  img.junebridals.com
                  img.newadoringdress.com
-                 img.ucenterdress.com;
+                 img.ucenterdress.com
+                 img.june-bridals.com
+                 img.ucenter-dress.com;
 
 
 
