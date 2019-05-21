@@ -105,7 +105,7 @@ local function get_mark(mark,width,height)
 
         return ":watermark(/mark/" .. mark .. "_" .. mark_width .. ".png," .. pos_left .. "," .. pos_top .. ",0)"
 
-    elseif (mark == 'ucenterdress.com') then
+    elseif (mark == 'ucenterdress.com' or mark == "ucenter-dress.com") then
         local mark_width = width
         local pos_left  = 0
         local pos_top   = 0
