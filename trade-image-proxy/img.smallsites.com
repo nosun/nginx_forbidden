@@ -3,9 +3,7 @@ server {
     server_name  img.dresspirit.com
                  img.sausalitostory.com
                  img.uniqbridal.com
-                 img.dearlover-corsets.com
                  img.mingdabeta.com
-                 img.amorrosado.com;
 
 
     fastcgi_hide_header Set-Cookie;
