@@ -1,14 +1,7 @@
 server {
     listen 80;
     server_name  img.dresspirit.com
-                 img.bridalona.com
-                 img.thenine5.com
-                 img.amorasecret.com
-                 img.ceceliasveil.com
                  img.sausalitostory.com
-                 img.bridalmelissa.com
-                 img.lovingbridal.com
-                 img.ms-right.com
                  img.uniqbridal.com
                  img.dearlover-corsets.com
                  img.mingdabeta.com
