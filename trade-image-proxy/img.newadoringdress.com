@@ -1,6 +1,6 @@
 server {
     listen     80;
-    listen     443 ssl;
+    listen     443 ssl http2;
     server_name  img.newadoringdress.com;
     
     rewrite ^  https://img.junebridals.com$request_uri? permanent;

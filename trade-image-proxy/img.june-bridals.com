@@ -1,7 +1,7 @@
 server {
 
     listen     80;
-    listen     443 ssl;
+    listen     443 ssl http2;
     server_name  img.june-bridals.com;
     ssl_certificate /etc/letsencrypt/live/img.june-bridals.com/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/img.june-bridals.com/privkey.pem; # managed by Certbot
