@@ -1,7 +1,7 @@
 server {
 
     listen     80;
-    listen     443 ssl http2;
+    listen     443 ssl;
     server_name  img.ucenter-dress.com;
     ssl_certificate /etc/letsencrypt/live/img.ucenter-dress.com/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/img.ucenter-dress.com/privkey.pem; # managed by Certbot
