@@ -8,7 +8,6 @@ server {
 
     ssl_stapling on;
     ssl_stapling_verify on;
-
     #access_log /var/log/nginx/img.ucenterdress_access.log;
 
     add_header X-Cache $upstream_cache_status;
