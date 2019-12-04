@@ -160,7 +160,7 @@ end
 
 --check signature
 local signature = string.sub(ngx.md5(ngx.md5(site) .. width .. height .. quality .. type .. name .. '.' ..ext),0,16)
-if signature ~= sig then return_forbidden() end
+if signature ~= sig then return_forbidden(signature) end
 
 -- check file if exist
 local file_path = get_file_path(name,ext).. name ..".".. ext
@@ -177,8 +177,9 @@ local filters = "filters" .. filter_mark .. filter_quality .. filter_webp
 --local filters = "filters" .. filter_quality
 
 local position = type - 50
-local left_top = width * position / 10 .. 'x0'
-local right_bottom = width * (position + 1) / 10 .. 'x'.. height
+local left_top = math.floor(width * position / 10) .. 'x0'
+local right_bottom = math.floor(width * (position + 1) / 10) .. 'x'.. height
 
 real_url = "/" .. thumbor_key .. "/" .. left_top .. ":" .. right_bottom .. "/" .. "left" .. "/" .. filters .. "/" .. file_path
+
 ngx.req.set_uri(real_url, true)
