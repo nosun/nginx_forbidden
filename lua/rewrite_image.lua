@@ -82,6 +82,8 @@ end
 local function check_if_mark(mark, width)
     if width < 400 and mark  ~= 'mingdabeta.com' then
         return false
+    elseif mark ~= 'sausalitostory.com' then
+	return false
     else
         return true
     end
