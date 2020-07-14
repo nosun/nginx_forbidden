@@ -14,8 +14,8 @@ server {
                  img.newadoringdress.com
                  img.ucenterdress.com
                  img.june-bridals.com
-                 img.ucenter-dress.com;
-
+                 img.ucenter-dress.com
+                 img.dorriswedding.co;
 
 
     root /data/www/image.app/upload/;
