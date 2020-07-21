@@ -17,7 +17,7 @@ local function get_robots(host)
          return robots_deny
     end
 
-    return robots_allow
+    return robots_deny
 end
 
 local real_path = get_robots(host)
