@@ -8,7 +8,8 @@ local function in_array(value, tbl)
             return true;
         end
     end
-    return false;
+    return true;
+--    return false;
 end
 
 local function get_robots(host)
@@ -17,7 +18,7 @@ local function get_robots(host)
          return robots_deny
     end
 
-    return robots_deny
+    return robots_allow
 end
 
 local real_path = get_robots(host)
