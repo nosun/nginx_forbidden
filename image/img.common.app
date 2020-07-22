@@ -18,7 +18,7 @@ server {
                  img.dorriswedding.co;
 
 
-    root /data/www/image.app/upload/;
+    root /data/www/image.app/upload;
     access_log /data/log/nginx/img.common_access.log;
 
 
