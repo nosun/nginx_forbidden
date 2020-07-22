@@ -1,5 +1,5 @@
 local host = ngx.var.host
-local robots_allow,robots_deny = '/robots_allow.txt','/robots_deny.txt'
+local robots_allow,robots_deny = '/data/www/image.app/upload/robots_allow.txt','/data/www/image.app/upload/robots_deny.txt'
 local deny = {}
 
 local function in_array(value, tbl)
