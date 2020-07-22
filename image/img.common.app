@@ -84,9 +84,9 @@ server {
       deny all;
     }
 
-#    location = /favicon.ico {
-#      log_not_found off;
-#    }
+    location = /favicon.ico {
+      log_not_found off;
+    }
 
     location / {
       proxy_pass http://thumbor;
