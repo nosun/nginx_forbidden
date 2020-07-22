@@ -72,9 +72,9 @@ server {
       rewrite_by_lua_file "/etc/nginx/lua/rewrite_image.lua";
     }
 
-    location ~ "robots.txt" {
-      rewrite_by_lua_file "/etc/nginx/lua/rewrite_robots.lua";
-    }
+    #location ~ "robots.txt" {
+    #  rewrite_by_lua_file "/etc/nginx/lua/rewrite_robots.lua";
+    #}
 
     location ~ "\.txt" {
       allow all;
