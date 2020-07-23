@@ -19,7 +19,7 @@ server {
 
 
     root /data/www/image.app/upload/;
-    access_log /data/log/nginx/img.common_access.log;
+    #access_log /data/log/nginx/img.common_access.log;
 
 
     # /image/300x200/99/1/feea0668c44f456789/feea0668c44fd5ea69f65fc62750de76/sometitle.jpg
