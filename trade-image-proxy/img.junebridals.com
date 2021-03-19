@@ -21,7 +21,10 @@ server {
     location = /.well-known/acme-challenge/ {
        return 404;
     }
-
+  
+    location = /robots.txt {
+       root /srv/www/share;
+    }
 
     location / {
       proxy_pass http://image;
