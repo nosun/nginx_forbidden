@@ -16,10 +16,10 @@ server {
                  img.june-bridals.com
                  img.ucenter-dress.com
                  img.dorriswedding.co
-                 img.cdn.dressafford.com
-                 img.cdn.junebridals.com
-                 img.cdn.dorriswedding.com
-                 img.cdn.ucenterdress.com;
+                 *.cdn.dressafford.com
+                 *.cdn.junebridals.com
+                 *.cdn.dorriswedding.com
+                 *.cdn.ucenterdress.com;
 
 
     root /data/www/image.app/upload/;
