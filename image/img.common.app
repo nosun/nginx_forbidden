@@ -6,7 +6,6 @@ server {
                  img.sausalitostory.com
                  img.mingdabeta.com
 
-                 img.blushingbridals.com
                  img.doriswedding.com
                  img.dorriswedding.com
                  img.dressafford.com
@@ -19,7 +18,8 @@ server {
                  *.cdn.dressafford.com
                  *.cdn.junebridals.com
                  *.cdn.dorriswedding.com
-                 *.cdn.ucenterdress.com;
+                 *.cdn.ucenterdress.com
+                 *.cdn.sausalitostory.com;
 
 
     root /data/www/image.app/upload/;
