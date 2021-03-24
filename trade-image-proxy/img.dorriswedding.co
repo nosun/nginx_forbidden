@@ -2,9 +2,9 @@ server {
 
     listen     80;
     listen     443 ssl;
-    server_name  img.dorriswedding.co;
-    ssl_certificate /etc/letsencrypt/live/img.dorriswedding.co/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/img.dorriswedding.co/privkey.pem; # managed by Certbot
+    server_name  img.dorriswedding.com;
+    ssl_certificate /etc/letsencrypt/live/img.dorriswedding.com-0001/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/img.dorriswedding.com-0001/privkey.pem; # managed by Certbot
 
     ssl_stapling on;
     ssl_stapling_verify on;
@@ -35,6 +35,7 @@ server {
       add_header Cache-Control "public";
       access_log off;
     }
+
 
 
 
