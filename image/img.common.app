@@ -72,6 +72,7 @@ server {
       set $ext $7;
       set $h $host;
       set $root $document_root;
+      set $format $arg_format;
       #expires 7d;
       rewrite_by_lua_file "/etc/nginx/lua/rewrite_image.lua";
     }
