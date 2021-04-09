@@ -95,6 +95,9 @@ server {
 
     location / {
       proxy_pass http://thumbor;
+      expires 60d;
+      add_header Cache-Control "public";
+
       access_by_lua '
         if ngx.var.sig == "" then
            ngx.exit(ngx.HTTP_FORBIDDEN)
