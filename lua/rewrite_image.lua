@@ -97,7 +97,7 @@ local function get_mark(mark,width,height)
     end
 
     if (mark == 'mingdabeta.com') then
-        local mark_width = math.floor(width * 0.8)
+        local mark_width = math.floor(width * 0.8 / 10) * 10
         local pos_left  = math.floor((width - mark_width)/2)
         local pos_top   = math.floor(0.1 * height)  -- about gold rate cut height of water_mark
         local mark_path = root .. "/mark/" .. mark .. "_" .. mark_width .. ".png"
