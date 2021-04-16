@@ -120,7 +120,7 @@ local function get_mark(mark,width,height)
 
         return ":watermark(/mark/" .. mark .. "_" .. mark_width .. ".png," .. pos_left .. "," .. pos_top .. ",0)"
     else
-        local mark_width = math.floor(width * 0.65 / 10) * 10
+        local mark_width = math.floor(width * 0.65)
         local pos_left  = math.floor((width - mark_width)/2)
         local pos_top   = math.floor(0.5 * height)  -- about gold rate cut height of water_mark
         local mark_path = root .. "/mark/" .. mark .. "_" .. mark_width .. ".png"
