@@ -93,6 +93,13 @@ server {
       log_not_found off;
     }
 
+    location = / {
+        default_type text/html;
+        content_by_lua_block {
+            ngx.say("")
+        }
+    }
+
     location / {
       proxy_pass http://thumbor;
       expires 60d;
