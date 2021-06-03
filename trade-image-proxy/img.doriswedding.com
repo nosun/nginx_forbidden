@@ -3,14 +3,13 @@ server {
     listen     80;
     listen     443 ssl;
     server_name  img.doriswedding.com;
-
-    ssl_certificate /etc/letsencrypt/live/img.doriswedding.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/img.doriswedding.com/privkey.pem; # managed by Certbot
+ssl_certificate /etc/letsencrypt/live/img.doriswedding.com-0001/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/img.doriswedding.com-0001/privkey.pem; # managed by Certbot
 
     ssl_stapling on;
     ssl_stapling_verify on;
 
-    #access_log /data/log/nginx/img.doriswedding_access.log;
+    #access_log /var/log/nginx/img.doriswedding_access.log;
 
     add_header X-Cache $upstream_cache_status;
 
@@ -43,5 +42,6 @@ server {
     # if ($scheme != "https") {
     #     return 301 https://$host$request_uri;
     # } # managed by Certbot
+
 
 }

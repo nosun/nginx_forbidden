@@ -3,8 +3,7 @@ local magick = require "magick"
 local width, height, quality, type, name, ext, host, sig, root=
 tonumber(ngx.var.width), tonumber(ngx.var.height), tonumber(ngx.var.quality), tonumber(ngx.var.type),
 ngx.var.name, ngx.var.ext, ngx.var.h ,ngx.var.sig, ngx.var.root
--- local webp = tonumber(ngx.var.webp)
-local format = ngx.var.format
+local webp = tonumber(ngx.var.webp)
 
 local max_width,max_height = 1684,2000
 local thumbor_key = "unsafe"
@@ -83,8 +82,6 @@ end
 local function check_if_mark(mark, width)
     if width < 400 and mark  ~= 'mingdabeta.com' then
         return false
-    elseif mark == 'sausalitostory.com' then
-	return false
     else
         return true
     end
@@ -97,7 +94,7 @@ local function get_mark(mark,width,height)
     end
 
     if (mark == 'mingdabeta.com') then
-        local mark_width = math.floor(width * 0.8 / 10) * 10
+        local mark_width = math.floor(width * 0.8)
         local pos_left  = math.floor((width - mark_width)/2)
         local pos_top   = math.floor(0.1 * height)  -- about gold rate cut height of water_mark
         local mark_path = root .. "/mark/" .. mark .. "_" .. mark_width .. ".png"
@@ -133,8 +130,8 @@ local function get_mark(mark,width,height)
     end
 end
 
-local function get_webp(format)
-    if format == 'webp' then
+local function get_webp(webp)
+    if webp == 1 then
         return ":format(webp)"
     else
         return ""
@@ -165,21 +162,24 @@ end
 local signature = string.sub(ngx.md5(ngx.md5(site) .. width .. height .. quality .. type .. name .. '.' ..ext),0,16)
 if signature ~= sig then return_forbidden(signature) end
 
-
 -- check file if exist
 local file_path = get_file_path(name,ext).. name ..".".. ext
 local real_path = root .. "/" .. file_path;
 --if file_exists(root .."/".. file_path) == false then return_not_found(root .. "/" .. file_path) end
 
 -- begin rewrite
-local width,height = get_size(real_path,width,height)
-local filter_mark = get_mark(domain,width,height)
-local filter_webp = get_webp(format)
+width,height = get_size(real_path,width,height)
+-- local filter_mark = get_mark(domain,width,height)
+local filter_mark = ''
+local filter_webp = get_webp(webp)
 local filter_quality = ":quality(" .. quality ..")"
 local filters = "filters" .. filter_mark .. filter_quality .. filter_webp
 --local filters = "filters" .. filter_quality
 
-local real_path = "/" .. thumbor_key .. "/" .. width .. "x" .. height .. "/" .. crop .. "/" .. filters .. "/" .. file_path
+local position = type - 50
+local left_top = math.floor(width * position / 10) .. 'x0'
+local right_bottom = math.floor(width * (position + 1) / 10) .. 'x'.. height
 
-ngx.var.args = ''
-ngx.req.set_uri(real_path, true)
+real_url = "/" .. thumbor_key .. "/" .. left_top .. ":" .. right_bottom .. "/" .. "left" .. "/" .. filters .. "/" .. file_path
+
+ngx.req.set_uri(real_url, true)

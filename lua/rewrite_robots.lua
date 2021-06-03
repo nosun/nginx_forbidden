@@ -8,7 +8,8 @@ local function in_array(value, tbl)
             return true;
         end
     end
-    return false;
+    return true;
+--    return false;
 end
 
 local function get_robots(host)

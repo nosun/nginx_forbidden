@@ -8,6 +8,12 @@ server {
     error_log /data/log/nginx/image.app_nginx_error.log error;
     access_log /data/log/nginx/image.app_nginx_access.log;
 
+
+    # /counterfeit/image_data/counterfeit_img/9ace221877362e9f47043f88bf15bdf1/73729-10000.jpg
+    location ^~ /counterfeit_img/ {
+        root /counterfeit/image_data;
+    }
+
     location / {
        index index.php index.html;
 
@@ -22,8 +28,9 @@ server {
 	#deny    all;
     } 
 
+
     location ~ \.php($|/) {
-        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_pass unix:/run/php/php5.6-fpm.sock;
         fastcgi_param PATH_INFO $fastcgi_path_info;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
         fastcgi_index  index.php;

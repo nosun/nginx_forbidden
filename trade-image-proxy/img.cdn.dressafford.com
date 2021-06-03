@@ -3,9 +3,9 @@ server {
     listen     80;
     listen     443 ssl;
     #http2_chunk_size  110k;
-    server_name  img.dressafford.com;
-ssl_certificate /etc/letsencrypt/live/img.dressafford.com-0001/fullchain.pem; # managed by Certbot
-ssl_certificate_key /etc/letsencrypt/live/img.dressafford.com-0001/privkey.pem; # managed by Certbot
+    server_name  *.cdn.dressafford.com;
+#ssl_certificate /etc/letsencrypt/live/img.dressafford.com-0001/fullchain.pem; # managed by Certbot
+#ssl_certificate_key /etc/letsencrypt/live/img.dressafford.com-0001/privkey.pem; # managed by Certbot
 
     ssl_stapling on;
     ssl_stapling_verify on;

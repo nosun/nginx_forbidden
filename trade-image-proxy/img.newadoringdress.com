@@ -4,8 +4,8 @@ server {
     server_name  img.newadoringdress.com;
     
     rewrite ^  https://img.junebridals.com$request_uri? permanent;
-ssl_certificate /etc/letsencrypt/live/img.newadoringdress.com/fullchain.pem; # managed by Certbot
-ssl_certificate_key /etc/letsencrypt/live/img.newadoringdress.com/privkey.pem; # managed by Certbot
+ssl_certificate /etc/letsencrypt/live/img.newadoringdress.com-0001/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/img.newadoringdress.com-0001/privkey.pem; # managed by Certbot
     
 
     ssl_stapling on;
@@ -21,5 +21,6 @@ ssl_certificate_key /etc/letsencrypt/live/img.newadoringdress.com/privkey.pem; #
     location = /.well-known/acme-challenge/ {
        return 404;
     }
+
 
 }
