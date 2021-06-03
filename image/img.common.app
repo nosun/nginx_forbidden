@@ -23,46 +23,10 @@ server {
 
 
     root /data/www/image.app/upload/;
-    #access_log /data/log/nginx/img.common_access.log;
-
-
-    # /image/300x200/99/1/feea0668c44f456789/feea0668c44fd5ea69f65fc62750de76/sometitle.jpg
-    location ~ "^/image/(\d+)x(\d+)/([\d]{1,3})/(\d)/([a-f0-9]{16})/([a-f0-9]{32})/(.*)\.(gif|jpg|png|css)$" {
-      default_type text/html;
-      set $width $1;
-      set $height $2;
-      set $quality $3;
-      set $type $4;
-      set $sig $5;
-      set $name $6;
-      set $ext $8;
-      set $h $host;
-      set $root $document_root;
-      #expires 7d;
-      rewrite_by_lua_file "/etc/nginx/lua/rewrite_image.lua";
-    }
-
-
-    # /image/300x200/99/50/feea0668c44f456789/feea0668c44fd5ea69f65fc62750de76.jpg
-    location ~ "^/image/(\d+)x(\d+)/([\d]{1,3})/([\d]{2})/([a-f0-9]{16})/([a-f0-9]{32})\.(gif|jpg|png|css)$" {
-      default_type text/html;
-      set $width $1;
-      set $height $2;
-      set $quality $3;
-      set $type $4;
-      set $sig $5;
-      set $name $6;
-      set $ext $7;
-      set $h $host;
-      set $root $document_root;
-      #expires 7d;
-      rewrite_by_lua_file "/etc/nginx/lua/rewrite_split_image.lua";
-    }
-
+    access_log /data/log/nginx/img.common_access.log;
 
     # /image/300x200/99/1/feea0668c44f456789/feea0668c44fd5ea69f65fc62750de76.jpg
     location ~ "^/image/(\d+)x(\d+)/([\d]{1,3})/(\d)/([a-f0-9]{16})/([a-f0-9]{32})\.(gif|jpg|png|css)$" {
-      default_type text/html;
       set $width $1;
       set $height $2;
       set $quality $3;
@@ -102,14 +66,12 @@ server {
 
     location / {
       proxy_pass http://thumbor;
+      proxy_cache        image_cache;
+      proxy_cache_key    $host$uri$is_args$args;
+      proxy_cache_valid  200 304 90d;
+      add_header Pragma  public;
+      proxy_ignore_headers Expires Cache-Control Set-Cookie;
+      proxy_hide_header  Set-Cookie;
       expires 60d;
-      add_header Cache-Control "public";
-
-      access_by_lua '
-        if ngx.var.sig == "" then
-           ngx.exit(ngx.HTTP_FORBIDDEN)
-        end
-      ';
     }
-
 }
